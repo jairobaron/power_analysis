@@ -9,6 +9,8 @@ interface PowerChartProps {
 
 export const PowerChart = ({ title, data, lines }: PowerChartProps) => {
   const hasRightAxis = lines.some(line => line.yAxisId === 'right');
+  const maxTime = Math.ceil(Math.max(...data.map(d => d.time)));
+  const ticks = Array.from({ length: maxTime + 1 }, (_, i) => i);
 
   return (
     <Card className="border-border/50 shadow-sm">
@@ -23,6 +25,9 @@ export const PowerChart = ({ title, data, lines }: PowerChartProps) => {
               dataKey="time"
               stroke="hsl(var(--muted-foreground))"
               style={{ fontSize: '12px' }}
+              type="number"
+              domain={[0, 'auto']}
+              ticks={ticks}
             />
             <YAxis
               yAxisId="left"
