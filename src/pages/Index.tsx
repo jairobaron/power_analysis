@@ -96,7 +96,7 @@ const Index = () => {
               { dataKey: "apparentPower", name: "Potencia Aparente (KVA)", color: "hsl(var(--chart-1))" }
             ]}
           />
-          <div className="grid grid-cols-2 gap-3 content-start">
+          <div className="grid grid-cols-3 gap-3 content-start">
             <MetricCard
               title="Energía Consumida"
               value={unitData.consumedEnergy.toFixed(2)}
@@ -105,18 +105,17 @@ const Index = () => {
               trend="neutral"
             />
             <MetricCard
-              title="Costo Total (sin crédito)"
+              title="Costo Total"
               value={`$${unitData.totalCostWithoutCredit.toFixed(2)}`}
               unit="/mes"
               icon={DollarSign}
               trend="negative"
             />
             <MetricCard
-              title="Costo Total (con crédito)"
-              value={`$${unitData.totalCostWithCredit.toFixed(2)}`}
-              unit="/mes"
-              icon={DollarSign}
-              trend="negative"
+              title="IRMS"
+              value={unitData.rmsCurrents.toFixed(2)}
+              unit="A"
+              trend="neutral"
             />
             <MetricCard
               title="Motorización"
@@ -129,12 +128,6 @@ const Index = () => {
               value={unitData.generationPercent.toFixed(2)}
               unit="%"
               trend="negative"
-            />
-            <MetricCard
-              title="IRMS"
-              value={unitData.rmsCurrents.toFixed(2)}
-              unit="A"
-              trend="neutral"
             />
             <MetricCard
               title="Factor Carga Cíclico"
