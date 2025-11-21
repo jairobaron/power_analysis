@@ -9,21 +9,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-dashboard-bg">
-      {/* Header */}
-      <header className="bg-dashboard-header text-white px-6 py-4 shadow-lg">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold">Análisis de Potencia SRP</h1>
-            <p className="text-sm text-white/70 mt-1">Unidad de Bombeo: {unitData.model}</p>
-          </div>
-          <Badge variant="secondary" className="bg-success/20 text-success border-success/30 px-4 py-2">
-            <Activity className="h-4 w-4 mr-1" />
-            En Línea
-          </Badge>
-        </div>
-      </header>
-
       <main className="p-4 max-w-[1024px] mx-auto">
+        {/* Header */}
+        <div className="mb-4">
+          <h1 className="text-2xl font-bold text-foreground">Análisis de Potencia SRP</h1>
+          <p className="text-sm text-muted-foreground mt-1">Unidad de Bombeo: {unitData.model}</p>
+        </div>
         {/* Key Metrics Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
           <MetricCard
@@ -56,8 +47,8 @@ const Index = () => {
           />
         </div>
 
-        {/* Power and Speed Chart */}
-        <div className="mb-4">
+        {/* Power/Speed and Current/Power Charts Side by Side */}
+        <div className="grid md:grid-cols-2 gap-4 mb-4">
           <PowerChart
             title="Potencia Instantánea y Velocidad vs Tiempo"
             data={chartData}
@@ -66,10 +57,6 @@ const Index = () => {
               { dataKey: "speed", name: "Velocidad", color: "hsl(var(--chart-2))" }
             ]}
           />
-        </div>
-
-        {/* Current and Power Chart */}
-        <div className="mb-4">
           <PowerChart
             title="Corriente y Potencia Instantánea vs Tiempo"
             data={chartData}
