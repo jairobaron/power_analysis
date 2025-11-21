@@ -4,10 +4,12 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 interface PowerChartProps {
   title: string;
   data: Array<{ time: number; [key: string]: number }>;
-  lines: Array<{ dataKey: string; name: string; color: string }>;
+  lines: Array<{ dataKey: string; name: string; color: string; yAxisId?: string }>;
 }
 
 export const PowerChart = ({ title, data, lines }: PowerChartProps) => {
+  const hasRightAxis = lines.some(line => line.yAxisId === 'right');
+
   return (
     <Card className="border-border/50 shadow-sm">
       <CardHeader className="pb-1 pt-3">
@@ -17,24 +19,33 @@ export const PowerChart = ({ title, data, lines }: PowerChartProps) => {
         <ResponsiveContainer width="100%" height={250}>
           <LineChart data={data} margin={{ top: 5, right: 15, left: -20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
-            <XAxis 
-              dataKey="time" 
+            <XAxis
+              dataKey="time"
               stroke="hsl(var(--muted-foreground))"
               style={{ fontSize: '12px' }}
             />
-            <YAxis 
+            <YAxis
+              yAxisId="left"
               stroke="hsl(var(--muted-foreground))"
               style={{ fontSize: '12px' }}
             />
-            <Tooltip 
-              contentStyle={{ 
+            {hasRightAxis && (
+              <YAxis
+                yAxisId="right"
+                orientation="right"
+                stroke="hsl(var(--muted-foreground))"
+                style={{ fontSize: '12px' }}
+              />
+            )}
+            <Tooltip
+              contentStyle={{
                 backgroundColor: 'hsl(var(--card))',
                 border: '1px solid hsl(var(--border))',
                 borderRadius: '6px',
                 fontSize: '12px'
               }}
             />
-            <Legend 
+            <Legend
               wrapperStyle={{ fontSize: '11px' }}
               iconType="line"
             />
@@ -47,6 +58,7 @@ export const PowerChart = ({ title, data, lines }: PowerChartProps) => {
                 stroke={line.color}
                 strokeWidth={2}
                 dot={false}
+                yAxisId={line.yAxisId || "left"}
                 animationDuration={300}
               />
             ))}

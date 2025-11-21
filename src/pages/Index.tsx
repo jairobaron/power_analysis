@@ -11,9 +11,8 @@ const Index = () => {
     <div className="min-h-screen bg-dashboard-bg">
       <main className="p-4 max-w-[1024px] mx-auto">
         {/* Header */}
-        <div className="mb-4">
-          <h1 className="text-2xl font-bold text-foreground">Análisis de Potencia SRP</h1>
-          <p className="text-sm text-muted-foreground mt-1">Unidad de Bombeo: {unitData.model}</p>
+        <div className="mb-4 align-center">
+          <h1 className="text-2xl font-bold text-foreground">Análisis de Potencia</h1>
         </div>
         {/* Key Metrics Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
@@ -26,7 +25,7 @@ const Index = () => {
           />
           <MetricCard
             title="Eficiencia"
-            value={unitData.efficiency.toFixed(0)}
+            value={unitData.efficiency.toFixed(2)}
             unit="%"
             icon={TrendingUp}
             trend="positive"
@@ -53,8 +52,8 @@ const Index = () => {
             title="Potencia Instantánea y Velocidad vs Tiempo"
             data={chartData}
             lines={[
-              { dataKey: "power", name: "Potencia (KW)", color: "hsl(var(--chart-1))" },
-              { dataKey: "speed", name: "Velocidad", color: "hsl(var(--chart-2))" }
+              { dataKey: "power", name: "Potencia (KW)", color: "hsl(var(--chart-1))", yAxisId: "right" },
+              { dataKey: "speed", name: "Velocidad", color: "hsl(var(--chart-2))", yAxisId: "left" }
             ]}
           />
           <PowerChart
@@ -101,20 +100,17 @@ const Index = () => {
               title="Energía Consumida"
               value={unitData.consumedEnergy.toFixed(2)}
               unit="KWh"
-              icon={Battery}
               trend="neutral"
             />
             <MetricCard
-              title="Costo Total"
-              value={`$${unitData.totalCostWithoutCredit.toFixed(2)}`}
+              title="Costo (Miles USD)"
+              value={`${unitData.totalCostWithoutCredit.toFixed(2)}`}
               unit="/mes"
-              icon={DollarSign}
               trend="negative"
             />
             <MetricCard
-              title="IRMS"
-              value={unitData.rmsCurrents.toFixed(2)}
-              unit="A"
+              title="Factor Carga Cíclico"
+              value={unitData.cyclicLoadFactor.toFixed(2)}
               trend="neutral"
             />
             <MetricCard
@@ -130,8 +126,9 @@ const Index = () => {
               trend="negative"
             />
             <MetricCard
-              title="Factor Carga Cíclico"
-              value={unitData.cyclicLoadFactor.toFixed(2)}
+              title="IRMS"
+              value={unitData.rmsCurrents.toFixed(2)}
+              unit="A"
               trend="neutral"
             />
           </div>
