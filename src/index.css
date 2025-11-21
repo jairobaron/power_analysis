@@ -44,11 +44,11 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
-    --chart-1: 200 90% 45%;
-    --chart-2: 175 60% 50%;
-    --chart-3: 195 70% 55%;
-    --chart-4: 38 92% 50%;
-    --chart-5: 142 70% 45%;
+    --chart-1: 200 90% 50%;
+    --chart-2: 30 95% 55%;
+    --chart-3: 150 70% 45%;
+    --chart-4: 270 70% 60%;
+    --chart-5: 330 75% 55%;
 
     --dashboard-header: 210 30% 12%;
     --dashboard-bg: 210 25% 96%;
@@ -91,11 +91,11 @@ All colors MUST be HSL.
     --input: 215 20% 18%;
     --ring: 200 85% 50%;
 
-    --chart-1: 200 85% 50%;
-    --chart-2: 175 55% 45%;
-    --chart-3: 195 65% 45%;
-    --chart-4: 38 88% 48%;
-    --chart-5: 142 65% 42%;
+    --chart-1: 200 85% 55%;
+    --chart-2: 30 90% 60%;
+    --chart-3: 150 65% 50%;
+    --chart-4: 270 65% 65%;
+    --chart-5: 330 70% 60%;
 
     --dashboard-header: 215 30% 10%;
     --dashboard-bg: 215 30% 6%;
