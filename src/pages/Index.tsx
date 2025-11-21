@@ -87,8 +87,8 @@ const Index = () => {
           />
         </div>
 
-        {/* Apparent Power Chart */}
-        <div className="mb-4">
+        {/* Apparent Power Chart and Key Metrics */}
+        <div className="grid md:grid-cols-2 gap-4 mb-4">
           <PowerChart
             title="Potencia Eléctrica Aparente vs Tiempo"
             data={chartData}
@@ -96,58 +96,52 @@ const Index = () => {
               { dataKey: "apparentPower", name: "Potencia Aparente (KVA)", color: "hsl(var(--chart-1))" }
             ]}
           />
-        </div>
-
-        {/* Cost Analysis */}
-        <div className="grid md:grid-cols-3 gap-3">
-          <MetricCard
-            title="Energía Consumida"
-            value={unitData.consumedEnergy.toFixed(2)}
-            unit="KWh"
-            icon={Battery}
-            trend="neutral"
-          />
-          <MetricCard
-            title="Costo Total (sin crédito)"
-            value={`$${unitData.totalCostWithoutCredit.toFixed(2)}`}
-            unit="/mes"
-            icon={DollarSign}
-            trend="negative"
-          />
-          <MetricCard
-            title="Costo Total (con crédito)"
-            value={`$${unitData.totalCostWithCredit.toFixed(2)}`}
-            unit="/mes"
-            icon={DollarSign}
-            trend="negative"
-          />
-        </div>
-
-        {/* Additional Metrics */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
-          <MetricCard
-            title="Motorización"
-            value={unitData.motorizationPercent.toFixed(2)}
-            unit="%"
-            trend="positive"
-          />
-          <MetricCard
-            title="Generación"
-            value={unitData.generationPercent.toFixed(2)}
-            unit="%"
-            trend="negative"
-          />
-          <MetricCard
-            title="IRMS"
-            value={unitData.rmsCurrents.toFixed(2)}
-            unit="A"
-            trend="neutral"
-          />
-          <MetricCard
-            title="Factor Carga Cíclico"
-            value={unitData.cyclicLoadFactor.toFixed(2)}
-            trend="neutral"
-          />
+          <div className="grid grid-cols-2 gap-3 content-start">
+            <MetricCard
+              title="Energía Consumida"
+              value={unitData.consumedEnergy.toFixed(2)}
+              unit="KWh"
+              icon={Battery}
+              trend="neutral"
+            />
+            <MetricCard
+              title="Costo Total (sin crédito)"
+              value={`$${unitData.totalCostWithoutCredit.toFixed(2)}`}
+              unit="/mes"
+              icon={DollarSign}
+              trend="negative"
+            />
+            <MetricCard
+              title="Costo Total (con crédito)"
+              value={`$${unitData.totalCostWithCredit.toFixed(2)}`}
+              unit="/mes"
+              icon={DollarSign}
+              trend="negative"
+            />
+            <MetricCard
+              title="Motorización"
+              value={unitData.motorizationPercent.toFixed(2)}
+              unit="%"
+              trend="positive"
+            />
+            <MetricCard
+              title="Generación"
+              value={unitData.generationPercent.toFixed(2)}
+              unit="%"
+              trend="negative"
+            />
+            <MetricCard
+              title="IRMS"
+              value={unitData.rmsCurrents.toFixed(2)}
+              unit="A"
+              trend="neutral"
+            />
+            <MetricCard
+              title="Factor Carga Cíclico"
+              value={unitData.cyclicLoadFactor.toFixed(2)}
+              trend="neutral"
+            />
+          </div>
         </div>
       </main>
     </div>
