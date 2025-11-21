@@ -62,7 +62,7 @@ const Index = () => {
             data={chartData}
             lines={[
               { dataKey: "current", name: "Corriente (A)", color: "hsl(var(--chart-3))" },
-              { dataKey: "instantaneousPower", name: "Potencia Inst. (W)", color: "hsl(var(--chart-1))" }
+              { dataKey: "instantaneousPower", name: "Potencia Inst. (W)", color: "hsl(var(--chart-2))" }
             ]}
           />
         </div>
@@ -82,7 +82,7 @@ const Index = () => {
             title="Factor de Potencia vs Tiempo"
             data={chartData}
             lines={[
-              { dataKey: "powerFactor", name: "Factor de Potencia", color: "hsl(var(--chart-1))" }
+              { dataKey: "powerFactor", name: "Factor de Potencia", color: "hsl(var(--chart-5))" }
             ]}
           />
         </div>
@@ -93,7 +93,7 @@ const Index = () => {
             title="Potencia Eléctrica Aparente vs Tiempo"
             data={chartData}
             lines={[
-              { dataKey: "apparentPower", name: "Potencia Aparente (KVA)", color: "hsl(var(--chart-1))" }
+              { dataKey: "apparentPower", name: "Potencia Aparente (KVA)", color: "hsl(var(--chart-3))" }
             ]}
           />
           <div className="grid grid-cols-3 gap-3 content-start">
