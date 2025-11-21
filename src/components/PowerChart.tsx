@@ -10,12 +10,12 @@ interface PowerChartProps {
 export const PowerChart = ({ title, data, lines }: PowerChartProps) => {
   return (
     <Card className="border-border/50 shadow-sm">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-base font-semibold">{title}</CardTitle>
+      <CardHeader className="pb-1 pt-3">
+        <CardTitle className="text-base font-semibold text-center">{title}</CardTitle>
       </CardHeader>
-      <CardContent>
-        <ResponsiveContainer width="100%" height={200}>
-          <LineChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
+      <CardContent className="pb-2">
+        <ResponsiveContainer width="100%" height={250}>
+          <LineChart data={data} margin={{ top: 5, right: 15, left: -20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" opacity={0.3} />
             <XAxis 
               dataKey="time" 
